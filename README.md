@@ -1,5 +1,4 @@
 # ripgen
-----
 A rust-based version of the popular [dnsgen](https://github.com/ProjectAnte/dnsgen) python utility.
 
 `ripgen` is split into two main parts:
