@@ -1,6 +1,6 @@
 [package]
 name = "ripgen"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 authors = ["d0nut <d0nut@resync.gg>", "youstin"]
 description = "A rust-based version of the popular dnsgen python utility."
@@ -12,4 +12,4 @@ repository = "https://github.com/resyncgg/ripgen"
 [dependencies]
 anyhow = "1"
 clap = { version = "3", features = ["derive"]}
-ripgen_lib = { version = "0.1.0", path = "../ripgen_lib", features = ["dnsgen"] }
+ripgen_lib = { version = "0.1", path = "../ripgen_lib", features = ["dnsgen"] }

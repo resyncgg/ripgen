@@ -1,5 +1,5 @@
-use addr::domain::Name;
-use addr::parse_domain_name;
+use addr::dns::Name;
+use addr::parse_dns_name;
 use crate::error::RipGenError;
 
 #[derive(Clone)]
@@ -66,7 +66,7 @@ impl<'domain> TryFrom<&'domain str> for DomainComponents<'domain> {
     type Error = RipGenError;
 
     fn try_from(domain: &'domain str) -> Result<Self, Self::Error> {
-        let parsed_domain_name: Name<'domain> = parse_domain_name(domain)
+        let parsed_domain_name: Name<'domain> = parse_dns_name(domain)
             .map_err(|_| RipGenError::ErrorParsingDomain(domain.to_string()))?;
 
         let root: &str = parsed_domain_name
