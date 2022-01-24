@@ -1,10 +1,10 @@
 # ripgen
 ----
 
-`ripgen` is based on the popular [dnsgen](https://github.com/ProjectAnte/dnsgen) python utility. 
+`ripgen` is based on the popular [dnsgen](https://github.com/ProjectAnte/dnsgen) python utility.
 
 `ripgen` is split into two main parts:
-    
+
 * **ripgen**: _A CLI utility that calls into `ripgen_lib` and uses dnsgen's transforms.
 * **ripgen_lib**: A library that allows you to create high performance permutations of domain names.
 
@@ -36,6 +36,6 @@ One deviation from dnsgen's behavior is that if no wordlist is specified then no
 * an iterator for wordlist entries
 * a function that converts `&&str` into `bool` for the purposes of filtering wordlist entries
 
-After creating a `RipGenManager`, transforms can be added on with `transform` and `chain_transform`. These transforms require a function definition (closure or otherwise) be passed in that can take the `&DomainComponent` and `WordListIterator` types and return an `Iterator<Item = String>`. 
+After creating a `RipGenManager`, transforms can be added on with `transform` and `chain_transform`. These transforms require a function definition (closure or otherwise) be passed in that can take the `&DomainComponent` and `WordListIterator` types and return an `Iterator<Item = String>`.
 
 Look at the non-default dnsgen transform implementations for examples on how these are implemented typically.
