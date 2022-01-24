@@ -26,12 +26,6 @@ pub struct Args {
         help = "The minimum length for a word to be considered important. If not specified, all words are accepted."
     )]
     pub(crate) min_word_len: Option<usize>,
-
-    #[clap(
-        long = "streaming",
-        help = "Streams results to stdout as they're generated instead of writing it all at once."
-    )]
-    pub(crate) streaming: bool
 }
 
 impl Args {
@@ -52,7 +46,7 @@ impl Args {
     pub(crate) fn get_wordlist_str(&self) -> Result<String> {
         let output = match self.wordlist {
             Some(ref path) => read_to_string(path)?,
-            None => format!("")
+            None => String::new()
         };
 
         Ok(output)

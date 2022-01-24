@@ -1,3 +1,5 @@
+#![deny(warnings)]
+
 mod args;
 
 use std::io::{BufWriter, stdout, Write};
@@ -28,11 +30,7 @@ fn main() {
         .chain_transform(ripgen_lib::dnsgen::numbers_transform)
         .chain_transform(ripgen_lib::dnsgen::dash_transform);
 
-    if args.streaming {
-        stream_output(rip_iter);
-    } else {
-        dump_output(rip_iter);
-    }
+    stream_output(rip_iter);
 }
 
 fn stream_output(rip_iter: impl Iterator<Item = String>) {
@@ -45,10 +43,4 @@ fn stream_output(rip_iter: impl Iterator<Item = String>) {
     }
 
     buf.flush().expect("Failed to perform final flush to stdout buffer.");
-}
-
-fn dump_output(rip_iter: impl Iterator<Item = String>) {
-    let output = rip_iter.collect::<Vec<String>>().join("\n");
-
-    println!("{}", output);
 }
