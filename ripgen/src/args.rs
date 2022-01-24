@@ -36,7 +36,8 @@ impl Args {
                 stdin()
                     .lock()
                     .lines()
-                    .collect::<Result<String, _>>()?
+                    .collect::<Result<Vec<String>, _>>()?
+                    .join("\n")
             }
         };
 

@@ -24,6 +24,7 @@ impl<'domain> RipGenManager<'domain> {
     ) -> Result<RipGenManager<'domain>, RipGenError>
     {
         let domain_components: Vec<DomainComponents> = domains
+            .filter(|line| !line.is_empty())
             .map(DomainComponents::try_from)
             .collect::<Result<_, _>>()?;
 
