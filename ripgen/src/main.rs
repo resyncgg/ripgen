@@ -39,8 +39,12 @@ fn stream_output(rip_iter: impl Iterator<Item = String>) {
     let mut buf = BufWriter::new(stdout_lock);
 
     for line in rip_iter {
-        writeln!(buf, "{}", line).expect("Failed to write to stdout buffer.");
+        if let Err(_) = writeln!(buf, "{}", line) {
+            // user might be using `head` to only grab the first couple of entries - we should exit
+            let _ = buf.flush();
+            return;
+        }
     }
 
-    buf.flush().expect("Failed to perform final flush to stdout buffer.");
+    let _ = buf.flush();
 }
