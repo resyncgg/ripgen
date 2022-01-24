@@ -1,12 +1,11 @@
 # ripgen
 ----
-
-`ripgen` is based on the popular [dnsgen](https://github.com/ProjectAnte/dnsgen) python utility.
+A rust-based version of the popular [dnsgen](https://github.com/ProjectAnte/dnsgen) python utility.
 
 `ripgen` is split into two main parts:
 
-* **ripgen**: _A CLI utility that calls into `ripgen_lib` and uses dnsgen's transforms.
-* **ripgen_lib**: A library that allows you to create high performance permutations of domain names.
+* **ripgen**: _A CLI utility that calls into `ripgen_lib` and uses dnsgen's transforms_.
+* **ripgen_lib**: _A library that allows you to create high performance permutations of domain names._
 
 # How to Install!
 Installation of `ripgen` is very simple - follow the steps below.
