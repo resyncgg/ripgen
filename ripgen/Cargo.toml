@@ -1,0 +1,15 @@
+[package]
+name = "ripgen"
+version = "0.1.0"
+edition = "2021"
+authors = ["d0nut <d0nut@resync.gg>", "youstin"]
+description = "dnsgen in rust"
+readme = "README.md"
+keywords = ["bug", "bounty", "dnsgen", "recon", "security"]
+license = "MIT"
+repository = "https://github.com/resyncgg/ripgen"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "3", features = ["derive"]}
+ripgen_lib = { version = "0.1.0", path = "../ripgen_lib", features = ["dnsgen"] }
