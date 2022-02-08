@@ -37,3 +37,25 @@ One deviation from dnsgen's behavior is that if no wordlist is specified then no
 After creating a `RipGenManager`, transforms can be added on with `transform` and `chain_transform`. These transforms require a function definition (closure or otherwise) be passed in that can take the `&DomainComponent` and `WordListIterator` types and return an `Iterator<Item = String>`.
 
 Look at the non-default dnsgen transform implementations for examples on how these are implemented typically.
+
+# FAQ
+## `linker 'cc' not found`
+If this happens, it means that you need to install some dependencies on your system to build `ripgen`. Here's how to fix that:
+
+
+### Debian (Ubuntu, Kali, WSL (_you probably used Ubuntu_))
+```
+sudo apt-get update
+sudo apt install build-essential
+```
+
+### Arch
+```
+sudo pacman -S base-devel
+```
+
+### Centos
+```
+sudo yum install gcc
+```
+
