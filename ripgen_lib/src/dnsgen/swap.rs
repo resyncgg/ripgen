@@ -11,7 +11,6 @@ pub fn swap_word_transform<'domain>(
     let word_copy = words.clone();
 
     words
-        .filter(|word| word.len() > 3)
         .filter(move |word| subdomain_string.contains(*word))
         .flat_map(move |word| {
             let word_clone = <&str>::clone(word);
