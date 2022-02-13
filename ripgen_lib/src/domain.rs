@@ -71,7 +71,7 @@ impl<'domain> TryFrom<&'domain str> for DomainComponents<'domain> {
 
         let root: &str = parsed_domain_name
             .root()
-            .ok_or(RipGenError::DomainMissingRoot)?;
+            .unwrap_or(domain);
 
         // we do this so we can appease lifetimes
         let root_start = domain.len() - root.len();

@@ -5,6 +5,4 @@ use thiserror::Error;
 pub enum RipGenError {
     #[error("Unable to parse provided domain.")]
     ErrorParsingDomain(String),
-    #[error("Provided domain does not have a root domain.")]
-    DomainMissingRoot,
 }

@@ -11,7 +11,7 @@ pub fn permute_words_transform<'domain>(
                 // this is the domain but with the word injected into it
                 let augmented_domain_components: Vec<&str> = [
                     &domain_elems[.. idx],
-                    &[word],
+                    [*word].as_slice(),
                     &domain_elems[idx ..]
                 ].concat();
 
