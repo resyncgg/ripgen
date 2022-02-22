@@ -22,7 +22,7 @@ pub fn swap_word_transform<'domain>(
                 .filter(move |sub_word| **sub_word != word_clone)
                 .map(move |sub_word| {
                     let replaced_subdomain = subdomain_replace.replace(word, sub_word);
-                    format!("{replaced_subdomain}.{root_string}")
+                    format!("{}.{}",replaced_subdomain,root_string)
                 })
         })
 }
