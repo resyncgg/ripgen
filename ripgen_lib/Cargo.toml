@@ -13,7 +13,7 @@ repository = "https://github.com/resyncgg/ripgen"
 
 [dependencies]
 thiserror = "1"
-addr = "0"
+addr = "0.15"
 fxhash = "0.2.1"
 regex = { version = "1", optional = true }
 lazy_static = { version = "1", optional = true }
