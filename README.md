@@ -59,3 +59,8 @@ sudo pacman -S base-devel
 sudo yum install gcc
 ```
 
+### Alpine
+```
+apk add build-base --no-cache
+```
+
