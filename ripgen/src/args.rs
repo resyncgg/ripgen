@@ -26,6 +26,13 @@ pub struct Args {
         help = "The minimum length for a word to be considered important. If not specified, all words are accepted."
     )]
     pub(crate) min_word_len: Option<usize>,
+
+    #[clap(
+        short = 'f',
+        long = "fast",
+        help = "Uses the most likely words only in permutations"
+    )]
+    pub(crate) fast: Option<bool>
 }
 
 impl Args {

@@ -7,6 +7,7 @@ use ripgen_lib::{RipGenIterator, RipGenManager};
 use crate::args::Args;
 use clap::Parser;
 
+const FAST_MODE_WORDLIST_LEN: usize = 10;
 const DEFAULT_WORD_LEN: usize = 5;
 
 fn main() {
@@ -18,11 +19,13 @@ fn main() {
         .expect("Failed to read in wordlist file.");
     let word_len = args.min_word_len.unwrap_or(DEFAULT_WORD_LEN);
 
+    let wordlist_lines = get_wordlist(&wordlist, &args);
+
     let manager = RipGenManager::new(
         domains.lines(),
-        wordlist.lines(),
+        wordlist_lines,
         &|word| word.len() >= word_len
-    ).expect("Failed to create Ripgen iterator");
+    ).expect("Failed to create ripgen iterator");
 
     let rip_iter = manager
         .transform(ripgen_lib::dnsgen::swap_word_transform)
@@ -47,4 +50,22 @@ fn stream_output(rip_iter: impl Iterator<Item = String>) {
     }
 
     let _ = buf.flush();
+}
+
+fn get_wordlist<'a>(wordlist: &'a str, args: &Args) -> impl Iterator<Item = &'a str> {
+    // https://github.com/ProjectAnte/dnsgen/blob/16daeef81205e7663708b3ee11d759215c7168fe/dnsgen/dnsgen.py#L220
+    let mut wordlist_iter = None;
+    let mut fast_wordlist_iter = None;
+
+    match args.fast {
+        Some(fast_mode) if fast_mode => {
+            fast_wordlist_iter = Some(wordlist.lines().take(FAST_MODE_WORDLIST_LEN))
+        },
+        _ => wordlist_iter = Some(wordlist.lines())
+    }
+
+    wordlist_iter
+        .into_iter()
+        .flatten()
+        .chain(fast_wordlist_iter.into_iter().flatten())
 }
